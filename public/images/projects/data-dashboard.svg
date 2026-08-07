@@ -1,0 +1,20 @@
+<svg width="1400" height="900" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1400" height="900" fill="#E8E1D3"/>
+  <rect x="72" y="72" width="1256" height="756" fill="#F4F0E6" stroke="#14241E" stroke-width="4"/>
+  <rect x="72" y="72" width="236" height="756" fill="#173D31"/>
+  <rect x="113" y="118" width="153" height="58" fill="#D9FF68"/>
+  <path d="M114 248H260M114 312H228M114 376H260M114 440H205" stroke="#F4F0E6" stroke-width="14"/>
+  <circle cx="190" cy="744" r="38" fill="#FF7658"/>
+  <text x="365" y="158" fill="#173D31" font-family="Arial, sans-serif" font-size="48" font-weight="700" letter-spacing="4">DATA DASHBOARD</text>
+  <rect x="365" y="218" width="276" height="145" fill="#D9FF68" stroke="#14241E" stroke-width="3"/>
+  <rect x="675" y="218" width="276" height="145" fill="#FF7658" stroke="#14241E" stroke-width="3"/>
+  <rect x="985" y="218" width="275" height="145" fill="#173D31" stroke="#14241E" stroke-width="3"/>
+  <path d="M402 317L456 274L501 302L582 250" stroke="#173D31" stroke-width="8"/>
+  <circle cx="503" cy="290" r="36" fill="#F4F0E6" stroke="#14241E" stroke-width="6"/>
+  <path d="M717 316H910" stroke="#173D31" stroke-width="15"/>
+  <path d="M1025 316H1205" stroke="#D9FF68" stroke-width="15"/>
+  <rect x="365" y="418" width="895" height="334" fill="#F4F0E6" stroke="#14241E" stroke-width="3"/>
+  <path d="M420 690V610H495V690M540 690V540H615V690M660 690V570H735V690M780 690V482H855V690M900 690V620H975V690M1020 690V520H1095V690M1140 690V455H1215V690" fill="#D9FF68" stroke="#14241E" stroke-width="3"/>
+  <path d="M420 470H1215" stroke="#14241E" stroke-opacity="0.2" stroke-width="2"/>
+</svg>
+

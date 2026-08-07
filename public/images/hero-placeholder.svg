@@ -1,0 +1,16 @@
+<svg width="1000" height="1200" viewBox="0 0 1000 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1000" height="1200" fill="#D9FF68"/>
+  <path d="M0 0H1000V320H0V0Z" fill="#173D31"/>
+  <path d="M84 0V1200M250 0V1200M416 0V1200M582 0V1200M748 0V1200M914 0V1200" stroke="#173D31" stroke-opacity="0.24"/>
+  <path d="M0 160H1000M0 400H1000M0 640H1000M0 880H1000M0 1120H1000" stroke="#173D31" stroke-opacity="0.24"/>
+  <circle cx="500" cy="520" r="220" fill="#F4F0E6" stroke="#14241E" stroke-width="4"/>
+  <circle cx="500" cy="463" r="102" fill="#FF7658" stroke="#14241E" stroke-width="4"/>
+  <path d="M279 879C279 729.331 378.167 625 500 625C621.833 625 721 729.331 721 879V1032H279V879Z" fill="#173D31" stroke="#14241E" stroke-width="4"/>
+  <path d="M200 1050H800" stroke="#14241E" stroke-width="4"/>
+  <rect x="60" y="58" width="312" height="82" fill="#D9FF68" stroke="#F4F0E6" stroke-width="3"/>
+  <text x="84" y="111" fill="#173D31" font-family="Arial, sans-serif" font-size="26" font-weight="700" letter-spacing="5">YOUR PORTRAIT</text>
+  <text x="940" y="1150" fill="#173D31" font-family="Arial, sans-serif" font-size="20" text-anchor="end" letter-spacing="4">RAHAND / 2026</text>
+  <path d="M88 1085V1152H155" stroke="#173D31" stroke-width="4"/>
+  <path d="M912 386V332H858" stroke="#F4F0E6" stroke-width="4"/>
+</svg>
+

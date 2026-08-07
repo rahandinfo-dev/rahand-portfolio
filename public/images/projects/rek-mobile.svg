@@ -1,0 +1,20 @@
+<svg width="1400" height="900" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1400" height="900" fill="#D9FF68"/>
+  <path d="M0 0H1400V900H0V0Z" stroke="#14241E" stroke-width="4"/>
+  <path d="M100 0V900M300 0V900M500 0V900M700 0V900M900 0V900M1100 0V900M1300 0V900" stroke="#173D31" stroke-opacity="0.18" stroke-width="2"/>
+  <path d="M0 150H1400M0 350H1400M0 550H1400M0 750H1400" stroke="#173D31" stroke-opacity="0.18" stroke-width="2"/>
+  <rect x="155" y="110" width="350" height="680" rx="54" fill="#F4F0E6" stroke="#14241E" stroke-width="5"/>
+  <rect x="180" y="145" width="300" height="610" rx="35" fill="#173D31"/>
+  <rect x="210" y="200" width="240" height="160" fill="#D9FF68"/>
+  <circle cx="250" cy="415" r="17" fill="#FF7658"/>
+  <path d="M285 410H420M210 473H420M210 520H373" stroke="#F4F0E6" stroke-width="14"/>
+  <rect x="210" y="595" width="240" height="92" fill="#F4F0E6"/>
+  <rect x="610" y="120" width="630" height="144" fill="#173D31"/>
+  <text x="655" y="212" fill="#F4F0E6" font-family="Arial, sans-serif" font-size="72" font-weight="700" letter-spacing="8">REK MOBILE</text>
+  <text x="612" y="350" fill="#173D31" font-family="Arial, sans-serif" font-size="28" letter-spacing="6">PRODUCT EXPERIENCE / 2026</text>
+  <path d="M610 410H1240" stroke="#173D31" stroke-width="4"/>
+  <path d="M610 475H1050M610 535H1160M610 595H980" stroke="#173D31" stroke-width="22"/>
+  <circle cx="1172" cy="686" r="103" fill="#FF7658" stroke="#14241E" stroke-width="4"/>
+  <path d="M1125 687H1219M1172 640V734" stroke="#14241E" stroke-width="5"/>
+</svg>
+
