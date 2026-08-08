@@ -47,9 +47,9 @@ export const portfolio = {
     phoneHref: "tel:+9647501173185",
   },
   media: {
-    hero: "/images/hero-placeholder.svg",
+    hero: "/images/hero.jpg",
     heroAlt: "شوێنی وێنەی سەرەکی ڕەهەند",
-    about: "/images/about-placeholder.svg",
+    about: "/images/about.jpg",
     aboutAlt: "شوێنی وێنەی بەشی دەربارە",
   },
   menu: [
@@ -112,7 +112,7 @@ export const portfolio = {
       cover: "/images/projects/rek-mobile.svg",
       gallery: [
         "/images/projects/rek-mobile.svg",
-        "/images/projects/brand-system.svg",
+        "/images/projects/rekapps.jpg",
       ],
       imageAlt: "نموونەی ڕووکاری ئەپی مۆبایل",
       summary:
@@ -135,9 +135,9 @@ export const portfolio = {
       title: "سیستەمی بەڕێوەبردنی فرۆشگا",
       category: "Web Application",
       year: "٢٠٢٥",
-      cover: "/images/projects/brand-system.svg",
+      cover: "/images/projects/rekapps.jpg",
       gallery: [
-        "/images/projects/brand-system.svg",
+        "/images/projects/rekapps.jpgg",
         "/images/projects/data-dashboard.svg",
       ],
       imageAlt: "نموونەی سیستەمی بەڕێوەبردنی فرۆشگا",
