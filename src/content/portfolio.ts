@@ -11,9 +11,8 @@ export type Project = {
   title: string;
   category: string;
   year: string;
-  cover: string;
-  gallery: string[];
-  imageAlt: string;
+  cover: ProjectImage;
+  gallery: ProjectImage[];
   summary: string;
   description: string;
   challenge: string;
@@ -24,6 +23,13 @@ export type Project = {
   services: string[];
   technologies: string[];
   projectUrl?: string;
+};
+
+export type ProjectImage = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
 };
 
 /**
@@ -39,11 +45,11 @@ export const portfolio = {
     eyebrow: "سڵاو، من ڕەهەندم",
     headline: "بیرۆکە دەگۆڕم بۆ بەرهەمی دیجیتاڵ.",
     introduction:
-      "ئەزموونێکی سادە، خێرا و مرۆڤانە دروست دەکەم؛ لە یەکەم هێڵی بیرۆکەوە تا دوا پیکسڵی بەرهەم.",
+      "ئەزموونێکی سادە، خێرا و مرۆڤانە دروست دەکەم، لە یەکەم هێڵی بیرۆکەوە تا دوا پیکسڵی بەرهەم.",
     availability: "ئامادەم بۆ پرۆژەی نوێ",
     location: "کوردستان، عێراق",
     email: "rahandmjaff@gmail.com",
-    phoneLabel: "٠٧٥٠ ١١٧ ٣١٨٥",
+    phoneLabel: "0750 117 3185",
     phoneHref: "tel:+9647501173185",
   },
   media: {
@@ -68,15 +74,15 @@ export const portfolio = {
     "چارەسەری زیرەک",
   ],
   about: {
-    title: "سادەیی بۆ من واتای کەم‌کاری نییە؛ واتای ڕوونییە.",
+    title: "سادەیی بۆ من واتای کەم‌کاری نییە، واتای ڕوونییە.",
     paragraphs: [
       "من ڕەهەندم، گەشەپێدەرێکی دیجیتاڵ کە حەزم لە دروستکردنی ئەزموونی خێرا، ڕێک‌وپێک و ئاسانە بۆ بەکارهێنەر.",
-      "لە هەر پرۆژەیەکدا سەرەتا کێشەکە دەناسین، پاشان شێوازێکی سادە بۆ چارەسەرکردنی دەدۆزمەوە و بە وردەکارییەکی جوان جێبەجێی دەکەم.",
+      "لە هەر پڕۆژەیەک کێشەکە دەناسین، پاشان شێوازێکی سادە بۆ چارەسەرکردنی دەدۆزمەوە و بە وردەکارییەکی جوان جێبەجێ دەکەم، بێ هیچ بەکارهێنانێکی زیرەکی دەستکرد بۆ درووست کردنی وێب/ئەپ.",
     ],
     facts: [
       { label: "شوێن", value: "کوردستان، عێراق" },
       { label: "زمان", value: "کوردی / English" },
-      { label: "فۆکەس", value: "Web & Mobile" },
+      { label: "فۆکەس", value: "Web & App Mobile" },
       { label: "دۆخ", value: "بەردەستم بۆ کار" },
     ],
   },
@@ -104,82 +110,44 @@ export const portfolio = {
   ],
   projects: [
     {
-      slug: "rek-mobile",
+      slug: "rekapps",
       number: "٠١",
-      title: "REK — ئەزموونی ئەپی مۆبایل",
-      category: "Mobile Product",
-      year: "٢٠٢٦",
-      cover: "/images/projects/rek-mobile.svg",
+      title: "RekApps — سیستەمی ژمێریاری و بەڕێوەبردن",
+      category: "ERP / Web Application",
+      year: "بەرهەمی ٢٠٢٦",
+      cover: {
+        src: "/images/projects/rekapps-main.jpg",
+        alt: "لۆگۆی سپی RekApps لەسەر پاشبنەمای پرتەقاڵی",
+        width: 1254,
+        height: 1254,
+      },
       gallery: [
-        "/images/projects/rek-mobile.svg",
-        "/images/projects/rekapps.jpg",
+        {
+          src: "/images/projects/rekapps-2.jpg",
+          alt: "داشبۆردی ڕووناکی سیستەمی RekApps بە زمانی کوردی",
+          width: 1597,
+          height: 772,
+        },
+        {
+          src: "/images/projects/rekapps-3.jpg",
+          alt: "داشبۆردی تاریکی سیستەمی RekApps بە زمانی کوردی",
+          width: 1600,
+          height: 769,
+        },
       ],
-      imageAlt: "نموونەی ڕووکاری ئەپی مۆبایل",
       summary:
-        "ڕووکارێکی ڕوون بۆ بەرهەمێکی مۆبایل کە خێرایی و ئاسانی بەکارهێنان لە پێشەوە دادەنێت.",
+        "سیستەمێکی یەکگرتوو بۆ ژمێریاری، فرۆشتن، کڕین و کۆگا لە کۆمپانیاکانی بیناسازی و پێداویستی خانووبەرە.",
       description:
-        "ئەم پرۆژەیە نموونەیەکی ئامادەیە بۆ پیشاندانی چۆنیەتی باسکردنی پرۆژەکانت. دەتوانیت ناو، دەق، وێنە و هەموو وردەکارییەکانی لە فایلەکەی ناوەڕۆک بگۆڕیت.",
+        "RekApps سیستەمێکی ERP ـە کە کارە ڕۆژانەکانی ژمێریاری، فرۆشتن، کڕین، کۆگا، کاڵا، پسووڵە و ڕاپۆرت لە یەک داشبۆردی کوردیدا کۆدەکاتەوە.",
       challenge:
-        "ڕێکخستنی زانیارییە زۆرەکان بە شێوەیەک کە بەکارهێنەر لە یەکەم ساتدا بزانێت چی بکات.",
+        "کۆکردنەوەی زانیارییە زۆر و پەیوەستەکانی ژمێریاری و کۆگا بە شێوەیەک کە بەکارهێنەر بە خێرایی دۆخی کارەکەی تێبگات.",
       solution:
-        "ڕێڕەوێکی کورت، تایپۆگرافیی بەهێز و سیستەمێکی یەکگرتووی ڕەنگ و بۆشایی بەکار هێنرا.",
-      client: "پرۆژەی نموونە",
+        "داشبۆردێکی ڕاست‌بۆچەپ، گەڕانێکی خێرا، کارت و ڕاپۆرتی ڕوون و دۆخی ڕووناک و تاریک دروست کرا تا کارە سەرەکییەکان بە کەمترین هەنگاو ئەنجام بدرێن.",
+      client: "کۆمپانیای بیناسازی و پێداویستی خانووبەرە",
       duration: "٦ هەفتە",
-      role: "UI/UX & Development",
-      services: ["UX Research", "UI Design", "Prototype"],
-      technologies: ["Figma", "React Native", "API"],
-    },
-    {
-      slug: "store-system",
-      number: "٠٢",
-      title: "سیستەمی بەڕێوەبردنی فرۆشگا",
-      category: "Web Application",
-      year: "٢٠٢٥",
-      cover: "/images/projects/rekapps.jpg",
-      gallery: [
-        "/images/projects/rekapps.jpgg",
-        "/images/projects/data-dashboard.svg",
-      ],
-      imageAlt: "نموونەی سیستەمی بەڕێوەبردنی فرۆشگا",
-      summary:
-        "سیستەمێکی یەکگرتوو بۆ بەڕێوەبردنی کاڵا، فرۆشتن و ڕاپۆرتە ڕۆژانەکان.",
-      description:
-        "نموونەی وێب‌ئەپێک کە کارە ڕۆژانەکانی فرۆشگا لە یەک داشبۆرددا کۆدەکاتەوە و زانیارییە گرنگەکان بە سادەیی پیشان دەدات.",
-      challenge:
-        "کەمکردنەوەی هەنگاوە دووبارەکان و دروستکردنی دیدێکی ڕوون بۆ دۆخی فرۆشتن و کۆگا.",
-      solution:
-        "داشبۆردێکی مۆدیولار، گەڕانێکی خێرا و فۆرمی کورت بۆ تۆمارکردنی مامەڵەکان دروست کرا.",
-      client: "پرۆژەی نموونە",
-      duration: "٨ هەفتە",
-      role: "Product Design & Frontend",
-      services: ["Product Strategy", "Dashboard", "Responsive UI"],
-      technologies: ["Next.js", "TypeScript", "PostgreSQL"],
-    },
-    {
-      slug: "data-dashboard",
-      number: "٠٣",
-      title: "داشبۆردی داتای کڕیار",
-      category: "Data Experience",
-      year: "٢٠٢٥",
-      cover: "/images/projects/data-dashboard.svg",
-      gallery: [
-        "/images/projects/data-dashboard.svg",
-        "/images/projects/rek-mobile.svg",
-      ],
-      imageAlt: "نموونەی داشبۆردی داتا",
-      summary:
-        "داتای ئاڵۆز بە چارت و نیشاندەری سادە گۆڕدراوە بۆ بڕیاردانی خێراتر.",
-      description:
-        "ئەم نموونەیە پیشان دەدات چۆن دەتوانرێت ژمارە و ڕاپۆرتی زۆر بە هێرارشییەکی بینراو و ئاسان بخوێندرێتەوە.",
-      challenge:
-        "پیشاندانی داتای زۆر بەبێ ئەوەی ڕووکارەکە قەرەباڵغ بێت یان بەکارهێنەر ون بێت.",
-      solution:
-        "زانیارییەکان بە پلەبەندی دابەش کران و تەنها نیشاندەرە پێویستەکان لە یەکەم ئاستدا هێڵرانەوە.",
-      client: "پرۆژەی نموونە",
-      duration: "٤ هەفتە",
-      role: "UX & Data UI",
-      services: ["Information Architecture", "Data UI", "Testing"],
-      technologies: ["Next.js", "Charts", "REST API"],
+      role: "Product Design & Development",
+      services: ["UX Research", "UI Design", "ERP Dashboard"],
+      technologies: ["Web Application", "REST API", "Database"],
     },
   ] satisfies Project[],
   notes: [
@@ -249,4 +217,3 @@ export const portfolio = {
     },
   ],
 } as const;
-

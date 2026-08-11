@@ -433,12 +433,19 @@ svg {
 
 .hero-image img,
 .about-image img,
-.project-image img,
-.dialog-cover img,
-.project-gallery img {
+.project-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.dialog-cover img,
+.project-gallery img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 .hero-stamp {
@@ -691,6 +698,8 @@ svg {
 .project-card-button {
   display: block;
   width: 100%;
+  min-width: 0;
+  max-width: 100%;
   padding: 0;
   background: transparent;
   text-align: start;
@@ -744,6 +753,8 @@ svg {
 .project-card-copy > div {
   display: flex;
   justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
   padding-bottom: 0.75rem;
   border-bottom: 1px solid var(--line);
   color: var(--muted);
@@ -1166,15 +1177,30 @@ svg {
 }
 
 .project-dialog {
+  --dialog-pad: clamp(1.1rem, 4vw, 3rem);
+
   width: min(94vw, 1240px);
   max-width: 1240px;
   max-height: 94dvh;
   margin: auto;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
   border: 1.5px solid var(--ink);
   background: var(--paper);
   color: var(--ink);
   padding: 0;
+}
+
+.project-dialog[open] {
+  animation: project-dialog-open 220ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.project-dialog[data-closing="true"] {
+  pointer-events: none;
+  animation: project-dialog-close 170ms ease-in both;
 }
 
 .project-dialog::backdrop {
@@ -1182,16 +1208,31 @@ svg {
   backdrop-filter: blur(5px);
 }
 
+.project-dialog[open]::backdrop {
+  animation: project-backdrop-open 220ms ease-out both;
+}
+
+.project-dialog[data-closing="true"]::backdrop {
+  animation: project-backdrop-close 170ms ease-in both;
+}
+
 .project-dialog-inner {
-  padding: clamp(1.1rem, 4vw, 3rem);
+  min-width: 0;
+  padding: var(--dialog-pad);
 }
 
 .dialog-topbar {
+  position: sticky;
+  z-index: 4;
+  top: calc(0rem - var(--dialog-pad));
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 1rem;
+  margin-block-start: calc(0rem - var(--dialog-pad));
+  margin-inline: calc(0rem - var(--dialog-pad));
+  padding: var(--dialog-pad) var(--dialog-pad) 1rem;
   border-bottom: 1px solid var(--line);
+  background: var(--paper);
 }
 
 .dialog-index,
@@ -1237,7 +1278,23 @@ svg {
 }
 
 .dialog-cover {
-  aspect-ratio: 16 / 8.5;
+  width: 100%;
+  max-width: 100%;
+}
+
+.dialog-hero > *,
+.project-detail-grid > *,
+.project-stack-grid > *,
+.dialog-footer > * {
+  min-width: 0;
+}
+
+.dialog-hero h2,
+.dialog-hero > p,
+.project-story h3,
+.project-facts dd,
+.dialog-note {
+  overflow-wrap: anywhere;
 }
 
 .project-detail-grid {
@@ -1314,13 +1371,54 @@ svg {
 
 .project-gallery {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
   padding-block: clamp(3rem, 7vw, 6rem);
 }
 
 .project-gallery .image-frame {
-  aspect-ratio: 4 / 3;
+  width: 100%;
+  max-width: 100%;
+}
+
+@keyframes project-dialog-open {
+  from {
+    opacity: 0;
+    transform: translateY(1rem) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes project-dialog-close {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(0.65rem) scale(0.99);
+  }
+}
+
+@keyframes project-backdrop-open {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes project-backdrop-close {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 .dialog-footer {
@@ -1595,22 +1693,17 @@ svg {
   }
 
   .project-dialog {
-    width: 100vw;
-    max-height: 100dvh;
-    border: 0;
-  }
+    --dialog-pad: 1rem;
 
-  .project-dialog-inner {
-    padding: 1.1rem;
+    width: calc(100vw - 1rem);
+    max-width: calc(100vw - 1rem);
+    height: calc(100dvh - 1rem);
+    max-height: calc(100dvh - 1rem);
   }
 
   .dialog-hero,
   .project-detail-grid {
     gap: 2rem;
-  }
-
-  .dialog-cover {
-    aspect-ratio: 4 / 3;
   }
 
   .dialog-footer {

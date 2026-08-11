@@ -40,6 +40,19 @@ function ProjectDialog({
   onClose: () => void;
 }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const [isClosing, setIsClosing] = useState(false);
+
+  const requestClose = () => {
+    const dialog = dialogRef.current;
+    if (!dialog?.open || isClosing) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      dialog.close();
+      return;
+    }
+
+    setIsClosing(true);
+  };
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -50,14 +63,27 @@ function ProjectDialog({
     <dialog
       ref={dialogRef}
       className="project-dialog"
+      id={`project-dialog-${project.slug}`}
       aria-labelledby={`project-title-${project.slug}`}
+      aria-describedby={`project-description-${project.slug}`}
+      aria-modal="true"
+      data-closing={isClosing ? "true" : undefined}
       onCancel={(event) => {
         event.preventDefault();
-        dialogRef.current?.close();
+        requestClose();
       }}
       onClose={onClose}
       onClick={(event) => {
-        if (event.target === dialogRef.current) dialogRef.current.close();
+        if (event.target === event.currentTarget) requestClose();
+      }}
+      onAnimationEnd={(event) => {
+        if (
+          isClosing &&
+          event.target === event.currentTarget &&
+          event.animationName === "project-dialog-close"
+        ) {
+          dialogRef.current?.close();
+        }
       }}
     >
       <div className="project-dialog-inner">
@@ -67,7 +93,7 @@ function ProjectDialog({
             type="button"
             className="icon-button dialog-close"
             aria-label="داخستنی وردەکاریی پرۆژە"
-            onClick={() => dialogRef.current?.close()}
+            onClick={requestClose}
             autoFocus
           >
             <CloseIcon />
@@ -79,16 +105,19 @@ function ProjectDialog({
             <p className="project-category">{project.category}</p>
             <h2 id={`project-title-${project.slug}`}>{project.title}</h2>
           </div>
-          <p>{project.description}</p>
+          <p id={`project-description-${project.slug}`}>
+            {project.description}
+          </p>
         </div>
 
         <div className="dialog-cover image-frame">
           <Image
-            src={project.cover}
-            alt={project.imageAlt}
-            width={1600}
-            height={1000}
-            sizes="(max-width: 800px) 100vw, 1100px"
+            src={project.cover.src}
+            alt={project.cover.alt}
+            width={project.cover.width}
+            height={project.cover.height}
+            quality={90}
+            sizes="(max-width: 800px) calc(100vw - 3rem), 1100px"
           />
         </div>
 
@@ -100,7 +129,7 @@ function ProjectDialog({
             </div>
             <div>
               <dt>ماوە</dt>
-              <dd>{project.duration}</dd>
+              <dd>١٤ ڕۆژ</dd>
             </div>
             <div>
               <dt>ڕۆڵ</dt>
@@ -144,14 +173,15 @@ function ProjectDialog({
         </div>
 
         <div className="project-gallery">
-          {project.gallery.map((image, index) => (
-            <div className="image-frame" key={`${image}-${index}`}>
+          {project.gallery.map((image) => (
+            <div className="image-frame" key={image.src}>
               <Image
-                src={image}
-                alt={`${project.imageAlt} — ${index + 1}`}
-                width={1200}
-                height={900}
-                sizes="(max-width: 800px) 100vw, 50vw"
+                src={image.src}
+                alt={image.alt}
+                width={image.width}
+                height={image.height}
+                quality={90}
+                sizes="(max-width: 800px) calc(100vw - 3rem), 1100px"
               />
             </div>
           ))}
@@ -170,13 +200,13 @@ function ProjectDialog({
             </a>
           ) : (
             <span className="dialog-note">
-              لینکی ڕاستەوخۆ دەتوانیت لە فایلەکەی ناوەڕۆک زیاد بکەیت.
+              RAHAND M. JAFF
             </span>
           )}
           <button
             className="text-button"
             type="button"
-            onClick={() => dialogRef.current?.close()}
+            onClick={requestClose}
           >
             داخستن
           </button>
@@ -361,7 +391,7 @@ export function PortfolioSite() {
                 height={1100}
                 sizes="(max-width: 800px) 94vw, 38vw"
               />
-              <span className="image-note">وێنەکەت لێرە دابنێ</span>
+              <span className="image-note">RAHAND M. JAFF</span>
             </div>
 
             <div className="about-copy">
@@ -412,24 +442,28 @@ export function PortfolioSite() {
           />
 
           <div className="project-grid">
-            {portfolio.projects.map((project, index) => (
+            {portfolio.projects.map((project) => (
               <article
                 key={project.slug}
-                className={`project-card project-card-${index + 1}`}
+                className="project-card project-card-1"
               >
                 <button
                   type="button"
                   className="project-card-button"
                   aria-haspopup="dialog"
+                  aria-controls={`project-dialog-${project.slug}`}
+                  aria-expanded={selectedProject?.slug === project.slug}
+                  aria-describedby={`project-summary-${project.slug}`}
                   onClick={() => setSelectedProject(project)}
                 >
                   <div className="project-image image-frame">
                     <Image
-                      src={project.cover}
-                      alt={project.imageAlt}
-                      width={1400}
-                      height={1000}
-                      sizes={index === 0 ? "(max-width: 800px) 94vw, 92vw" : "(max-width: 800px) 94vw, 46vw"}
+                      src={project.cover.src}
+                      alt={project.cover.alt}
+                      width={project.cover.width}
+                      height={project.cover.height}
+                      quality={90}
+                      sizes="(max-width: 800px) calc(100vw - 2.4rem), 92vw"
                     />
                     <span className="project-open" aria-hidden="true">
                       <PlusIcon />
@@ -441,7 +475,9 @@ export function PortfolioSite() {
                       <span>{project.year}</span>
                     </div>
                     <h3>{project.title}</h3>
-                    <p>{project.summary}</p>
+                    <p id={`project-summary-${project.slug}`}>
+                      {project.summary}
+                    </p>
                   </div>
                 </button>
               </article>

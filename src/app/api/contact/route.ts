@@ -325,7 +325,7 @@ async function sendEmail(
     "پەیام:",
     input.message,
     "",
-    "Rahand Portfolio",
+    "Rahand M. JAFF",
   ].join("\n");
 
   const html = `
@@ -383,7 +383,7 @@ async function sendEmail(
             <tr>
               <td
                 style="
-                  background-color: #111827;
+                  background-color: #271b11;
                   padding: 28px 28px 26px 28px;
                   text-align: center;
                 "
@@ -394,8 +394,8 @@ async function sendEmail(
                     width: 48px;
                     height: 48px;
                     line-height: 48px;
-                    background-color: #84cc16;
-                    color: #111827;
+                    background-color: #fd8700;
+                    color: #271b11;
                     font-size: 18px;
                     font-weight: 800;
                     border-radius: 10px;
@@ -439,16 +439,16 @@ async function sendEmail(
                   style="
                     font-size: 23px;
                     font-weight: 700;
-                    color: #111827;
+                    color: #271b11;
                     margin-bottom: 8px;
                   "
                 >
-                  پەیامێکی نوێت هەیە 👋
+                  پەیامێکی نوێت هەیە لە پۆرتفۆلیۆکەتەوە!
                 </div>
 
                 <div
                   style="
-                    color: #6b7280;
+                    color: #807b6b;
                     font-size: 14px;
                     line-height: 1.9;
                   "
@@ -495,7 +495,7 @@ async function sendEmail(
 
                       <div
                         style="
-                          color: #111827;
+                          color: #271b11;
                           font-size: 15px;
                           font-weight: 700;
                         "
@@ -524,7 +524,7 @@ async function sendEmail(
 
                       <div
                         style="
-                          color: #111827;
+                          color: #271b11;
                           font-size: 14px;
                           font-weight: 600;
                           direction: ltr;
@@ -550,7 +550,7 @@ async function sendEmail(
 
                       <div
                         style="
-                          color: #111827;
+                          color: #271b11;
                           font-size: 15px;
                           font-weight: 700;
                         "
@@ -569,7 +569,7 @@ async function sendEmail(
               <td style="padding: 22px 30px 8px 30px;">
                 <div
                   style="
-                    color: #111827;
+                    color: #271b11;
                     font-size: 13px;
                     font-weight: 700;
                     margin-bottom: 10px;
@@ -582,10 +582,10 @@ async function sendEmail(
                   style="
                     background-color: #ffffff;
                     border: 1px solid #d1d5db;
-                    border-right: 4px solid #84cc16;
+                    border-right: 4px solid #fd8700;
                     border-radius: 10px;
                     padding: 18px;
-                    color: #374151;
+                    color: #514a37;
                     font-size: 14px;
                     line-height: 2;
                     word-break: break-word;
@@ -610,7 +610,7 @@ async function sendEmail(
                   )}"
                   style="
                     display: inline-block;
-                    background-color: #111827;
+                    background-color: #271b11;
                     color: #ffffff;
                     text-decoration: none;
                     padding: 14px 28px;
@@ -636,7 +636,7 @@ async function sendEmail(
               >
                 <div
                   style="
-                    color: #6b7280;
+                    color: #807a6b;
                     font-size: 11px;
                     line-height: 1.8;
                   "
